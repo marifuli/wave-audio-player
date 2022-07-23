@@ -1,6 +1,6 @@
 {
     "name": "wave-audio-player",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "description": "Wave audio player with Custom Native HTML",
     "license": "MIT",
     "repository": "marifuli/wave-audio-player",
