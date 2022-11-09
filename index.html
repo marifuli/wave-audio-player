@@ -6,10 +6,10 @@
     <!-- <script type="module" src="./wave-audio-player.umd.js"></script> -->
     <!-- <script src="/src/wave.js"></script> -->
 
-    <script src="./src/wave-audio-player.min.js"></script>
+    <script src="src/wave-audio-player.min.js"></script>
     <script>
         function eventFired (event) {
-            // console.log(event)
+            console.log(event)
         }
     </script>
 </head>
@@ -26,6 +26,7 @@
         wave-width="200"
         wave-height="40"
         onEnded="eventFired"
+        onError="eventFired"
         onLoadedmetadata="eventFired"
         onCanplay="eventFired"
         onCanplaythrough="eventFired"
@@ -78,5 +79,17 @@
 
     </div>
     
+    <script>
+        let ht = document.createElement('div')
+        ht.innerHTML = `<wave-audio-player
+            class="first"
+            src="/samples/file.mp3" 
+            wave-width="200"
+            wave-height="40"
+            ></wave-audio-player>`
+        document.body.appendChild(
+            ht
+        )
+    </script>
 </body>
 </html>

@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
             super();
             this.shadowDOM = this.attachShadow({mode: 'open' });
             this.audioData = null;
-            console.log(this.getAttribute('onEnded'));
+            // console.log(this.getAttribute('onEnded'));
 
             if(this.hasAttribute("wave-options")) {
                 this.options = JSON.parse(this.attributes['wave-options'].value);
@@ -97,6 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 'onTimeupdate',
                 'onVolumechange',
                 'onWaiting',
+                'onError',
             ]).forEach(ev => {
                 let main = ev.split('on')[1].toLowerCase()
                 this.audio.addEventListener(main, (e) => {
