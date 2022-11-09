@@ -3,6 +3,9 @@ document.addEventListener('DOMContentLoaded', () => {
         constructor() {
             super();
             this.shadowDOM = this.attachShadow({mode: 'open' });
+            this.setupAfterConstructor()
+        }
+        setupAfterConstructor () {
             this.audioData = null;
             // console.log(this.getAttribute('onEnded'));
 
@@ -42,7 +45,19 @@ document.addEventListener('DOMContentLoaded', () => {
             this.playIconContainer = null;
             this.raf = null;
         }
-
+        static get observedAttributes () {
+            return [
+                'id', 'class',
+                'src', 
+                'wave-options', 
+                'wave-width',
+                'wave-height',
+            ];
+        }
+        attributeChangedCallback(attrName, oldVal, newVal) {    
+            this.setupAfterConstructor()
+            this.connectedCallback()   
+        }  
         initComponent() {
             this.playPathButton = this.shadowDOM.getElementById('playPathButton');
             this.svg = this.shadowDOM.getElementById('svg');
@@ -107,8 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 })
             })
-        }
-
+        }              
         //- methods for the general use
         togglePlay = () => {
             this.playPause()
